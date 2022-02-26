@@ -1,0 +1,15 @@
+
+<div class="flex flex-row">
+  <%= image_tag tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
+
+  <div class="ml-6">
+    <div>
+      <span class="font-semibold"><%= tweet.user.name %></span>
+      <span class="ml-1 text-gray-500">@<%= tweet.user.uid %></span>
+      <span class="text-gray-500"> · <%= time_tag tweet.created_at, data: { local: 'time-ago' } %></span>
+    </div>
+    <div>
+      <span class="text-sm"><%= tweet.content %></span>
+    </div>
+  </div>
+</div>
