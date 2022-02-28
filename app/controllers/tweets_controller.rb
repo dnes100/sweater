@@ -1,9 +1,11 @@
 class TweetsController < ApplicationController
 
   def create
-    current_user.tweets.create! tweet_params
+    @tweet = current_user.tweets.create! tweet_params
 
-    redirect_to root_path
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private

@@ -5,9 +5,5 @@
     <%= render 'tweets/form', tweet: current_user.tweets.new %>
   </div>
 
-  <% current_user.tweets.order(created_at: :desc).each do |tweet| %>
-    <div class="border-x border-b border-gray-700 p-4">
-      <%= render tweet %>
-    </div>
-  <% end %>
+  <%= render 'home/tweets' %>
 </div>
