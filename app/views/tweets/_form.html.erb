@@ -1,19 +1,25 @@
 <div class="mt-5">
   <%= form_with(
       model: tweet,
-      data: { controller: 'reset', action: 'turbo:submit-end->reset#reset' }
+      data: { controller: 'reset-form', action: 'turbo:submit-end->reset-form#reset' }
     ) do |form| %>
 
     <div class="flex flex-row">
       <%= image_tag current_user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
 
-      <div class="flex flex-col w-full max-w-screen-md">
+      <div class="flex flex-col w-full">
         <!-- Note: focus:ring-0 is needed to remove input field border on focus (added by tailwind by default?)-->
-        <%= form.text_area :content, placeholder: "What's happening?", class: 'bg-black border-none text-xl ml-3 focus:ring-0', rows: 3 %>
+        <%= form.text_area :content,
+          placeholder: "What's happening?",
+          class: 'bg-black border-none text-xl ml-3 focus:ring-0',
+          rows: 3,
+          data: { controller: 'validate-form', action: 'validate-form#onInput' } %>
 
         <div class="my-2">
           <div class="flex justify-end">
-            <%= form.submit "Tweet", class: 'bg-sky-500 px-3 py-1 rounded-full font-semibold justify-self-end' %>
+            <%= form.submit "Tweet",
+              class: 'bg-sky-500 disabled:opacity-50 cursor-pointer disabled:cursor-default px-4 py-1 rounded-full font-semibold justify-self-end',
+              disabled: true %>
           </div>
         </div>
       </div>
