@@ -1,4 +1,4 @@
-<div class="border-x border-b border-gray-700 p-4">
+<div class="border-x border-b border-gray-700 p-4" id="<%= dom_id tweet %>">
   <div class="flex flex-row">
     <%= image_tag tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
 
@@ -14,13 +14,22 @@
             <div data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button">
               <div class="text-gray-500 font-semibold cursor-pointer px-2 py-1 hover:bg-sky-500/10 hover:rounded-full hover:text-sky-500 hover:font-bold" title="More">···</div>
             </div>
-            <div data-dropdown-target="menu" class="absolute hidden right-2 top-2 bg-black">
+            <div data-dropdown-target="menu" class="absolute hidden right-2 top-2 bg-black text-gray-400">
               <ol class="rounded shadow shadow-gray-500 p-2">
-                <li>
-                  One
+                <li class="text-red-500 flex flex-row items-center">
+                  <%= button_to tweet, method: :delete, data: {action: "click->dropdown#toggle"}, confirm: 'Delete?' do %>
+                    <i class="fa fa-trash mr-2"></i>Delete
+                  <% end %>
                 </li>
-                <li>Two</li>
-                <li>Three</li>
+                <li class="flex flex-row items-center">
+                  <i class="fa fa-github mr-2"></i>Two
+                </li>
+                <li class="flex flex-row items-center whitespace-nowrap">
+                  <i class="fa fa-twitter mr-2"></i>Third link here and so on.
+                </li>
+                <li class="flex flex-row items-center whitespace-nowrap">
+                  <i class="fa fa-twitter mr-2"></i>Fouth link
+                </li>
               </ol>
             </div>
           </div>
@@ -30,6 +39,7 @@
       <div>
         <span class="text-sm"><%= simple_format tweet.content %></span>
       </div>
+
     </div>
   </div>
 </div>
