@@ -2,12 +2,31 @@
   <div class="flex flex-row">
     <%= image_tag tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
 
-    <div class="ml-6">
-      <div>
-        <span class="font-semibold"><%= tweet.user.name %></span>
-        <span class="ml-1 text-gray-500">@<%= tweet.user.uid %></span>
-        <span class="text-gray-500"> · <%= time_tag tweet.created_at, data: { local: 'time-ago' } %></span>
+    <div class="ml-6 w-full">
+      <div class="flex flex-row justify-between">
+        <div>
+          <span class="font-semibold"><%= tweet.user.name %></span>
+          <span class="ml-1 text-gray-500">@<%= tweet.user.uid %></span>
+          <span class="text-gray-500"> · <%= time_tag tweet.created_at, data: { local: 'time-ago' } %></span>
+        </div>
+        <div>
+          <div data-controller="dropdown" class="relative">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide" data-dropdown-target="button">
+              <div class="text-gray-500 font-semibold cursor-pointer px-2 py-1 hover:bg-sky-500/10 hover:rounded-full hover:text-sky-500 hover:font-bold" title="More">···</div>
+            </div>
+            <div data-dropdown-target="menu" class="absolute hidden right-2 top-2 bg-black">
+              <ol class="rounded shadow shadow-gray-500 p-2">
+                <li>
+                  One
+                </li>
+                <li>Two</li>
+                <li>Three</li>
+              </ol>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div>
         <span class="text-sm"><%= simple_format tweet.content %></span>
       </div>
