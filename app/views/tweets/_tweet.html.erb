@@ -17,10 +17,11 @@
             <div data-dropdown-target="menu" class="absolute hidden right-2 top-2 bg-black text-gray-400">
               <ol class="rounded shadow shadow-gray-500 p-2">
                 <li class="text-red-500 flex flex-row items-center">
-                  <%= button_to tweet, method: :delete, data: {action: "click->dropdown#toggle"}, confirm: 'Delete?' do %>
+                  <%= link_to tweet, data: {turbo_method: :delete, turbo_confirm: 'Delete?'} do %>
                     <i class="fa fa-trash mr-2"></i>Delete
                   <% end %>
                 </li>
+
                 <li class="flex flex-row items-center">
                   <i class="fa fa-github mr-2"></i>Two
                 </li>
