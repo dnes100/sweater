@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_25_071242) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_11_124542) do
   create_table "tweets", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
@@ -27,7 +27,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_25_071242) do
     t.string "uid", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "tweets", "users"
