@@ -10,6 +10,10 @@ class User < ApplicationRecord
   validates_uniqueness_of :email, :uid
 
   def avatar_name
-    'dinesh_avatar.jpg'
+    if uid == 'dinesh'
+      return 'dinesh_avatar.jpg'
+    end
+
+    'avatar.png'
   end
 end
