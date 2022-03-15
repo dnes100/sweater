@@ -1,9 +1,4 @@
-<div class="w-full max-w-screen-md">
-  <div class="border-x border-b border-gray-700 p-4">
-    <h1 class="font-bold text-xl">Home</h1>
-
-    <%= render 'tweets/form', tweet: current_user.tweets.new %>
-  </div>
-
-  <%= render 'home/tweets' %>
+<div class="flex flex-row">
+  <%= render 'home/left' %>
+  <%= render 'home/center' %>
 </div>
