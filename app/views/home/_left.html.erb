@@ -10,11 +10,40 @@
 
   </div>
 
-  <div class="flex flex-none py-3">
-    <%= image_tag current_user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
-    <div class="ml-3 hidden md:block">
-      <div class="font-semibold"><%= current_user.name %></div>
-      <div class="text-gray-500">@<%= current_user.uid %></div>
+  <div class="flex-none py-3">
+    <div
+      class="relative"
+      data-controller="dropdown"
+    >
+      <div
+        class="flex items-center cursor-pointer hover:bg-sky-500/10 hover:rounded-full p-3"
+        data-action="click->dropdown#toggle click@window->dropdown#hide"
+        data-dropdown-target="button"
+      >
+        <%= image_tag current_user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
+        <div class="ml-3 hidden md:block">
+          <div class="font-semibold"><%= current_user.name %></div>
+          <div class="text-gray-500">@<%= current_user.uid %></div>
+        </div>
+        <div class="pl-4 font-bold">
+          ...
+        </div>
+      </div>
+      <div
+        data-dropdown-target="menu"
+        class="absolute hidden inset-x-auto bottom-full bg-black text-gray-400"
+      >
+        <div class="rounded shadow shadow-gray-500 p-5">
+          <%=
+            link_to 'Log out',
+              destroy_user_session_path,
+              data: {
+                turbo_method: :delete,
+                turbo_confirm: 'Log out?'
+              }
+          %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
