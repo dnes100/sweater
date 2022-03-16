@@ -1,0 +1,23 @@
+<div>
+  <% if params[:query].blank? %>
+    Try searching for people or keywords.
+  <% elsif @users.blank? %>
+    No results found.
+  <% else %>
+    <% @users.each do |user| %>
+      <div>
+        <%= link_to user do %>
+          <div
+            class="flex items-center cursor-pointer hover:bg-sky-500/10 p-3"
+          >
+            <%= image_tag user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
+            <div class="ml-3">
+              <div class="font-semibold"><%= user.name %></div>
+              <div class="text-gray-500">@<%= user.uid %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

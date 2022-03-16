@@ -1,0 +1,41 @@
+<div class="border-l border-gray-700 p-4 h-full">
+
+  <div
+    class="relative"
+    data-controller="dropdown"
+  >
+    <div
+      class="flex items-center"
+      data-action="click->dropdown#toggle click@window->dropdown#hide"
+      data-dropdown-target="button"
+    >
+      <%= form_with url: search_path, data: { controller: 'form-submission' } do |form| %>
+        <!--
+          focus-within: pseudo class which matches if any children is focused.
+          For div, focus doesn't work but focus-within works if it has focusable input fields.
+        -->
+        <div class="flex items-center bg-gray-800 rounded-full px-4 py-1 focus-within:ring-2">
+          <i class="fa fa-search"></i>
+          <%=
+            form.text_field :query,
+              class: "bg-gray-800 border-none focus:ring-0 w-full",
+              data: { action: "input->form-submission#search" }
+          %>
+        </div>
+      <% end %>
+    </div>
+    <div
+      data-dropdown-target="menu"
+      class="absolute hidden inset-x-auto top-full mt-3 w-full bg-black text-gray-400"
+    >
+      <div class="rounded shadow shadow-gray-500 p-5">
+        <div class="rounded-lg">
+          <div id="search_results">
+            Try searching for people or keywords.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

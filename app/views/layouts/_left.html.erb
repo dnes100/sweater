@@ -1,12 +1,16 @@
-<div class="flex flex-col p-4">
+<div class="flex flex-col p-1 lg:p-4 border-r border-gray-700">
   <div class="flex flex-1 flex-col">
-    <!-- menu items here -->
-    <i class="fa fa-twitter fa-2x"></i>
 
-    <div class="mt-5">
-      <i class="fa fa-home fa-2x"></i>
-      <span class="font-bold text-xl pl-3">Home</span>
-    </div>
+    <%= link_to root_path do %>
+      <i class="fa fa-twitter fa-2x"></i>
+    <% end %>
+
+    <%= link_to root_path, class: "mt-5" do %>
+      <div>
+        <i class="fa fa-home fa-2x"></i>
+        <span class="font-bold text-xl pl-3 hidden lg:inline-block">Home</span>
+      </div>
+    <% end %>
 
   </div>
 
@@ -16,16 +20,18 @@
       data-controller="dropdown"
     >
       <div
-        class="flex items-center cursor-pointer hover:bg-sky-500/10 hover:rounded-full p-3"
+        class="flex items-center cursor-pointer hover:bg-sky-500/10 hover:rounded-full p-2"
         data-action="click->dropdown#toggle click@window->dropdown#hide"
         data-dropdown-target="button"
       >
-        <%= image_tag current_user.avatar_name, class: 'rounded-full w-12 h-12 object-cover' %>
-        <div class="ml-3 hidden md:block">
-          <div class="font-semibold"><%= current_user.name %></div>
+        <div class="w-10 h-10">
+          <%= image_tag current_user.avatar_name, class: 'rounded-full object-cover' %>
+        </div>
+        <div class="ml-3 hidden lg:block">
+          <div class="font-semibold whitespace-nowrap"><%= current_user.name %></div>
           <div class="text-gray-500">@<%= current_user.uid %></div>
         </div>
-        <div class="pl-4 font-bold">
+        <div class="pl-4 font-bold hidden lg:block">
           ...
         </div>
       </div>

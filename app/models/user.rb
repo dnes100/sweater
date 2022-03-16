@@ -16,4 +16,8 @@ class User < ApplicationRecord
 
     'avatar.png'
   end
+
+  def cover_image
+    'beach_cover.jpg'
+  end
 end

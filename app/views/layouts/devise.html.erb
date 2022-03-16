@@ -9,16 +9,21 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
     <main class="container mx-auto py-5">
-      <div class="my-5">
-        <p class="text-green-500"><%= notice %></p>
-        <p class="text-red-500"><%= alert %></p>
-      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa fa-twitter fa-5x text-sky-500"></i>
 
-      <%= yield %>
+        <div class="my-5">
+          <p class="text-green-500"><%= notice %></p>
+          <p class="text-red-500"><%= alert %></p>
+        </div>
+
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

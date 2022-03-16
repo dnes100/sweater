@@ -14,11 +14,15 @@
   </head>
 
   <body class="bg-black text-white">
-    <main class="px-2 sm:px-10">
-      <div>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
+    <main class="flex h-screen w-full px-2 sm:px-4 md:px-8 lg:px-18 xl:px-24 2xl:px-52">
+      <!--
+        <div>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+        </div>
+      -->
+
+      <%= render 'layouts/left' %>
 
       <%= yield %>
     </main>
