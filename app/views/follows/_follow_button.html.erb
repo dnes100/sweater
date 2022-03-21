@@ -1,0 +1,19 @@
+<div id="follow_button">
+  <%=
+    if current_user.following?(user)
+      button_to "",
+        follow_path(user),
+        method: :delete,
+        data: { hover: "Unfollow", content: 'Following' },
+        form: { data: { turbo_confirm: "Unfollow #{user.name}?" } },
+        class: "rounded-full border border-gray-700 font-semibold py-1 px-6
+          after:content-[attr(data-content)] hover:after:content-[attr(data-hover)]
+          hover:text-red-700 hover:border-red-700"
+    else
+      button_to "Follow",
+        follows_path,
+        params: { id: user.id },
+        class: "rounded-full bg-white text-black font-semibold py-1 px-6"
+    end
+  %>
+</div>

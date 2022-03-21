@@ -1,3 +1,5 @@
+# Represents twitter account
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -6,8 +8,21 @@ class User < ApplicationRecord
 
   has_many :tweets
 
+  # follows join table, user follows other users.
+  has_many :follows
+  has_many :followings, through: :follows, source: :following
+
+  # Reverse of follows relation, user is followed by other users.
+  has_many :follower_relations, class_name: 'Follow', foreign_key: :following_id
+  has_many :followers, through: :follower_relations, source: :user
+
+
   validates_presence_of :email, :name, :uid
   validates_uniqueness_of :email, :uid
+
+  def following?(user)
+    followings.include?(user)
+  end
 
   def avatar_name
     if uid == 'dinesh'

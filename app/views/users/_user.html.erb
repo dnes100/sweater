@@ -1,5 +1,6 @@
 <div class="overflow-auto h-screen w-full">
   <div class="flex items-center ml-5 mb-5 mt-3">
+    <!-- history.back() is normal js nothing to do with stimulus -->
     <%= link_to nil, onclick: "history.back()" do %>
       <i class="fa fa-arrow-left"></i>
     <% end %>
@@ -16,7 +17,7 @@
         <%= image_tag @user.avatar_name, class: 'rounded-full w-32 h-32 object-cover -mt-16' %>
       </div>
       <div class="flex flex-none items-center">
-        <%= link_to "Follow", "#", class: "rounded-full bg-white text-black font-semibold py-1 px-6" %>
+        <%= render 'follows/follow_button', user: @user %>
       </div>
     </div>
   </div>
