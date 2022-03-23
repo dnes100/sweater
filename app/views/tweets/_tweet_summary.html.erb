@@ -1,4 +1,8 @@
-<div class="border-b border-gray-700 p-4" id="<%= dom_id tweet %>">
+<div
+  class="border-b border-gray-700 p-4 cursor-pointer"
+  id="<%= dom_id tweet %>"
+  onclick="window.location.href='/tweets/<%= tweet.id %>'"
+>
   <div class="flex flex-row">
     <%=
       link_to tweet.user do

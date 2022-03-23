@@ -24,9 +24,11 @@
         data-action="click->dropdown#toggle click@window->dropdown#hide"
         data-dropdown-target="button"
       >
+
         <div class="w-10 h-10">
-          <%= image_tag current_user.avatar_name, class: 'rounded-full object-cover' %>
+          <%= image_tag current_user.avatar_name, class: 'rounded-full object-cover w-full h-full' %>
         </div>
+
         <div class="ml-3 hidden lg:block">
           <div class="font-semibold whitespace-nowrap"><%= current_user.name %></div>
           <div class="text-gray-500">@<%= current_user.uid %></div>
