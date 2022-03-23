@@ -56,8 +56,26 @@
         </div>
       </div>
 
-      <div>
+      <div class="pb-4">
         <span class="text-sm"><%= simple_format tweet.content %></span>
+      </div>
+
+      <div class="flex justify-between text-gray-500 text-sm">
+        <div class="w-full flex items-center">
+          <i class="fa fa-comment-o mr-2"></i>
+          <%= tweet.replies.size > 0 ? tweet.replies.size : nil %>
+        </div>
+        <div class="w-full">
+          <i class="fa fa-retweet"></i>
+        </div>
+        <div class="w-full">
+          <i class="fa fa-heart-o"></i>
+        </div>
+        <div class="w-full">
+          <i class="fa fa-upload"></i>
+        </div>
+
+
       </div>
 
     </div>

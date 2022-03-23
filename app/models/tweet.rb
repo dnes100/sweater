@@ -1,8 +1,10 @@
 class Tweet < ApplicationRecord
   belongs_to :user
 
-  # This tweet is commented in reply to parent tweet
-  belongs_to :parent, class_name: "Tweet", optional: true
+  # NOTE: This tweet is commented in reply to parent tweet
+  #   counter_cache (replies_count) column is read_only
+  #   To reset/update counter_cache of a tweet, Tweet.reset_counters(tweet_id, :replies_count)
+  belongs_to :parent, class_name: "Tweet", counter_cache: :replies_count, optional: true
 
   # Reverse of parent tweet
   has_many :replies, class_name: "Tweet", foreign_key: "parent_id"
