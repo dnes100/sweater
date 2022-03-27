@@ -1,7 +1,6 @@
 <div
-  class="border-b border-gray-700 p-4 cursor-pointer"
+  class="border-b border-gray-700 p-4"
   id="<%= dom_id tweet %>"
-  onclick="window.location.href='/tweets/<%= tweet.id %>'"
 >
   <div class="flex flex-row">
     <%=
@@ -56,27 +55,13 @@
         </div>
       </div>
 
-      <div class="pb-4">
-        <span class="text-sm"><%= simple_format tweet.content %></span>
-      </div>
+      <%= link_to tweet do %>
+        <div class="py-4">
+          <span class="text-sm"><%= simple_format tweet.content %></span>
+        </div>
+      <% end %>
 
-      <div class="flex justify-between text-gray-500 text-sm">
-        <div class="w-full flex items-center">
-          <i class="fa fa-comment-o mr-2"></i>
-          <%= tweet.replies.size > 0 ? tweet.replies.size : nil %>
-        </div>
-        <div class="w-full">
-          <i class="fa fa-retweet"></i>
-        </div>
-        <div class="w-full">
-          <i class="fa fa-heart-o"></i>
-        </div>
-        <div class="w-full">
-          <i class="fa fa-upload"></i>
-        </div>
-
-
-      </div>
+      <%= render 'tweets/footer', tweet: tweet, liked_tweet_ids: liked_tweet_ids %>
 
     </div>
   </div>

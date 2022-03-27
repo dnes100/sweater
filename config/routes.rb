@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :tweets
+  resources :tweets do
+    member do
+      post :like
+      post :unlike
+    end
+  end
   resources :follows, only: [:create, :destroy]
 
   post 'search', to: 'search#index', as: 'search'

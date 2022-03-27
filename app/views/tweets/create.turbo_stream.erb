@@ -1,5 +1,6 @@
 <%=
   turbo_stream.prepend 'tweets' do
-    render 'tweets/tweet_summary', tweet: @tweet
+    # likes for this newly created tweet is always empty
+    render 'tweets/tweet_summary', tweet: @tweet, liked_tweet_ids: []
   end
 %>

@@ -1,0 +1,14 @@
+<%
+  action = liked ? unlike_tweet_path(tweet) : like_tweet_path(tweet)
+  icon = liked ? 'fa-heart' : 'fa-heart-o'
+  title = liked ? 'Unlike' : 'Like'
+%>
+
+<div id="<%= dom_id(tweet, 'likes') %>">
+  <%= button_to action, title: title do %>
+    <div class="rounded-full px-2 hover:text-red-500">
+      <%= content_tag :i, nil, class: "fa #{icon} mr-2" %>
+      <%= tweet.likes.size > 0 ? tweet.likes.size : nil %>
+    </div>
+  <% end %>
+</div>

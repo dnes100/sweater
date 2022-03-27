@@ -1,5 +1,5 @@
 <div id="tweets">
   <% tweets.order(created_at: :desc).each do |tweet| %>
-    <%= render 'tweets/tweet_summary', tweet: tweet %>
+    <%= render 'tweets/tweet_summary', tweet: tweet, liked_tweet_ids: liked_tweet_ids %>
   <% end %>
 </div>

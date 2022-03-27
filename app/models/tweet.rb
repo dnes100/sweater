@@ -9,5 +9,7 @@ class Tweet < ApplicationRecord
   # Reverse of parent tweet
   has_many :replies, class_name: "Tweet", foreign_key: "parent_id"
 
+  has_many :likes, dependent: :destroy
+
   validates_presence_of :content
 end
