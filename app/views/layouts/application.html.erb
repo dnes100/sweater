@@ -14,7 +14,7 @@
   </head>
 
   <body class="bg-black text-white">
-    <main class="flex h-screen w-full px-2 sm:px-4 md:px-8 lg:px-18 xl:px-24 2xl:px-52">
+    <main class="flex w-full px-2 sm:px-4 md:px-8 lg:px-18 xl:px-24 2xl:px-52">
       <!--
         <div>
           <p class="notice"><%= notice %></p>
@@ -24,7 +24,16 @@
 
       <%= render 'layouts/left' %>
 
-      <%= yield %>
+      <div class="flex w-full">
+        <div class="flex basis-2/3">
+          <%= yield %>
+        </div>
+
+        <div class="basis-1/3">
+          <%= render 'home/right' %>
+        </div>
+      </div>
+
     </main>
   </body>
 </html>
