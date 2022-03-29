@@ -1,5 +1,8 @@
 <%=
-  turbo_stream.update dom_id(@tweet, 'likes') do
+  # NOTE replace vs update
+  #   replace will replace the entire element (ie. div with dom_id)
+  #   update will replace its content but not the div itself
+  turbo_stream.replace dom_id(@tweet, 'likes') do
     render 'tweets/likes', tweet: @tweet, liked: @liked
   end
 %>

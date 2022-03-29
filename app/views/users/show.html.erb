@@ -1,2 +1,40 @@
-<%= render 'users/user' %>
+<div class="w-full border-r border-gray-700">
+  <div class="flex items-center ml-5 mb-5 mt-3">
+    <!-- history.back() is normal js nothing to do with stimulus -->
+    <%= link_to nil, onclick: "history.back()" do %>
+      <i class="fa fa-arrow-left"></i>
+    <% end %>
+    <div class="ml-5">
+      <h1 class="font-bold text-xl"><%= @user.name %></h1>
+    </div>
+  </div>
 
+  <%= image_tag @user.cover_image, class:"w-full object-cover h-52"%>
+
+  <div class="mx-4">
+    <div class="flex">
+      <div class="flex flex-1">
+        <%= image_tag @user.avatar_name, class: 'rounded-full w-32 h-32 object-cover -mt-16' %>
+      </div>
+      <div class="flex flex-none items-center">
+        <%= render 'follows/follow_button', user: @user %>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-4">
+    <div class="font-bold text-xl"><%= @user.name %></div>
+    <div class="text-gray-500 text-sm">@<%= @user.uid %></div>
+  </div>
+
+  <div class="text-gray-500 mx-4 mt-4 text-sm">
+    <i class="fa fa-calendar"></i>
+    <span>Joined <%= @user.created_at.strftime("%B %Y") %></span>
+  </div>
+
+  <div class="mt-10">
+    <div class="border-b border-gray-700 pl-10 pb-4 font-semibold">Tweets</div>
+
+    <%= render 'tweets/tweets', tweets: @tweets, liked_tweet_ids: @liked_tweet_ids %>
+  </div>
+</div>
