@@ -6,7 +6,12 @@
     <% end %>
   </div>
   <div class="w-full">
-    <i class="fa fa-retweet"></i>
+    <%=
+      render 'retweets/retweet_button',
+        tweet: tweet,
+        retweeted: @retweets_per_tweet_id[tweet.id]&.user_id == current_user.id
+        #retweeted: retweeted_tweet_ids.include?(tweet.id)
+    %>
   </div>
   <div class="w-full">
     <%= render 'tweets/likes', tweet: tweet, liked: liked_tweet_ids.include?(tweet.id) %>

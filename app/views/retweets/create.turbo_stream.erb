@@ -1,0 +1,5 @@
+<%=
+  turbo_stream.replace dom_id(@tweet, 'retweet') do
+    render 'retweets/retweet_button', tweet: @tweet, retweeted: @retweeted
+  end
+%>

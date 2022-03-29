@@ -1,0 +1,18 @@
+<%
+  action = retweeted ? retweet_path(tweet) : retweets_path(id: tweet.id)
+  method = retweeted ? 'delete' : 'post'
+  title = retweeted ? 'Undo retweet' : 'Retweet'
+  text_color = retweeted ? 'text-green-500' : nil
+%>
+
+
+<div id="<%= dom_id(tweet, 'retweet') %>">
+  <%= button_to action, method: method do %>
+    <div class="<%= text_color %> group">
+      <span class="rounded-full p-1 mr-1 group-hover:bg-green-500/10">
+        <i class="fa fa-retweet"></i>
+      </span>
+      <%= tweet.retweets.size > 0 ? tweet.retweets.size : nil %>
+    </div>
+  <% end %>
+</div>

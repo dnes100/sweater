@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
   resources :follows, only: [:create, :destroy]
+  resources :retweets, only: [:create, :destroy]
 
   post 'search', to: 'search#index', as: 'search'
 

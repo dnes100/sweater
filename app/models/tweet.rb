@@ -11,5 +11,25 @@ class Tweet < ApplicationRecord
 
   has_many :likes, dependent: :destroy
 
+  # NOTE: retweets are just like 'likes' table.
+  #   We could easily use single table for likes and retweets with extra column.
+  #   But using separate table to work with counter_cache easily.
+  has_many :retweets, dependent: :destroy
+
+
+
+  # enum tweet_type: {
+
+  #   # original/root tweet without parent_id
+  #   original: 0,
+
+  #   # has both parent_id and content
+  #   reply: 1,
+
+
+  #   # has both parent_id and content, differs from reply in that it is like a retweet
+  #   quote: 2,
+  # }
+
   validates_presence_of :content
 end

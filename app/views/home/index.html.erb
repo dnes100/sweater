@@ -5,5 +5,9 @@
     <%= render 'tweets/form', tweet: current_user.tweets.new %>
   </div>
 
-  <%= render 'tweets/tweets', tweets: @tweets, liked_tweet_ids: @liked_tweet_ids %>
+  <%=
+    render 'tweets/tweets',
+      tweets: @tweets,
+      liked_tweet_ids: @liked_tweet_ids
+   %>
 </div>

@@ -35,6 +35,11 @@
   <div class="mt-10">
     <div class="border-b border-gray-700 pl-10 pb-4 font-semibold">Tweets</div>
 
-    <%= render 'tweets/tweets', tweets: @tweets, liked_tweet_ids: @liked_tweet_ids %>
+    <%=
+      render 'tweets/tweets',
+        tweets: @tweets,
+        liked_tweet_ids: @liked_tweet_ids,
+        retweeted_tweet_ids: @retweeted_tweet_ids
+    %>
   </div>
 </div>

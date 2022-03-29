@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_many :follower_relations, class_name: 'Follow', foreign_key: :following_id
   has_many :followers, through: :follower_relations, source: :user
 
-  # Tweets liked by the user
   has_many :likes
+  has_many :retweets
 
   validates_presence_of :email, :name, :uid
   validates_uniqueness_of :email, :uid

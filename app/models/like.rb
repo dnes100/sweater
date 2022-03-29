@@ -1,4 +1,4 @@
-# Represents a like on a post
+# Join table between Tweet and User representing a like
 
 class Like < ApplicationRecord
   belongs_to :user

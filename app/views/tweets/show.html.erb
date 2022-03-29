@@ -32,7 +32,12 @@
   </div>
 
   <div class="p-4">
-    <%= render 'tweets/footer', tweet: @tweet, liked_tweet_ids: @liked_tweet_ids %>
+    <%=
+      render 'tweets/footer',
+        tweet: @tweet,
+        liked_tweet_ids: @liked_tweet_ids,
+        retweeted_tweet_ids: @retweeted_tweet_ids
+    %>
   </div>
 
   <hr class="border-gray-700" />
@@ -43,6 +48,11 @@
 
   <hr class="border-gray-700" />
 
-  <%= render 'tweets/tweets', tweets: @tweet.replies, liked_tweet_ids: @liked_tweet_ids %>
+  <%=
+    render 'tweets/tweets',
+      tweets: @tweet.replies,
+      liked_tweet_ids: @liked_tweet_ids,
+      retweeted_tweet_ids: @retweeted_tweet_ids
+  %>
 
 </div>
