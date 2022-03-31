@@ -1,58 +1,7 @@
-<div class="w-full border-r border-gray-700">
-  <div class="flex items-center ml-5 mb-5 mt-3">
-    <!-- history.back() is normal js nothing to do with stimulus -->
-    <%= link_to nil, onclick: "history.back()" do %>
-      <i class="fa fa-arrow-left"></i>
-    <% end %>
-    <div class="ml-5">
-      <h1 class="font-bold text-xl"><%= 'Tweet' %></h1>
-    </div>
-  </div>
+<div class="flex basis-2/3">
+  <%= render 'tweets/center' %>
+</div>
 
-  <div class="flex flex-row p-4">
-    <%=
-      link_to @tweet.user do
-        image_tag @tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover'
-      end
-    %>
-    <div class="ml-4">
-      <%= link_to @tweet.user do %>
-        <div class="font-semibold"><%= @tweet.user.name %></div>
-        <div class="text-gray-500">@<%= @tweet.user.uid %></div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="px-4 text-2xl">
-    <%= simple_format @tweet.content %>
-  </div>
-
-  <div class="p-4 text-gray-500 text-sm">
-    <span> · <%= time_tag @tweet.created_at, data: { local: 'time', format: '%l:%M %p · %b %e, %Y' } %></span> · Twitter Wep App
-  </div>
-
-  <div class="p-4">
-    <%=
-      render 'tweets/footer',
-        tweet: @tweet,
-        liked_tweet_ids: @liked_tweet_ids,
-        retweeted_tweet_ids: @retweeted_tweet_ids
-    %>
-  </div>
-
-  <hr class="border-gray-700" />
-
-  <div class="p-4">
-    <%= render 'tweets/form', tweet: current_user.tweets.new(parent: @tweet) %>
-  </div>
-
-  <hr class="border-gray-700" />
-
-  <%=
-    render 'tweets/tweets',
-      tweets: @tweet.replies,
-      liked_tweet_ids: @liked_tweet_ids,
-      retweeted_tweet_ids: @retweeted_tweet_ids
-  %>
-
+<div class="basis-1/3">
+  <%= render 'home/right' %>
 </div>

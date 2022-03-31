@@ -1,0 +1,18 @@
+<div id="search_results" class="p-3">
+  <% if @users.blank? %>
+    <span>Try searching for people or messages.</span>
+  <% end %>
+  <% @users.each do |user| %>
+    <div class="mt-3">
+      <%= button_to show_conversation_messages_path(recipient_id: user.id) do %>
+        <div class="flex items-center">
+          <%= image_tag user.avatar_name, class: 'rounded-full w-12 h-12 object-cover mr-2' %>
+          <div class="whitespace-nowrap text-ellipsis overflow-hidden">
+            <span class="font-semibold"><%= user.name %></span>
+            <span class="ml-1 text-gray-500">@<%= user.uid %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

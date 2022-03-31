@@ -18,6 +18,7 @@
           <i class="fa fa-search"></i>
           <%=
             form.text_field :query,
+              placeholder: "Search Twitter",
               class: "bg-gray-800 border-none focus:ring-0 w-full",
               data: { action: "input->form-submission#search" }
           %>

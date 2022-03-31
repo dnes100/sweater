@@ -19,6 +19,10 @@ class User < ApplicationRecord
   has_many :likes
   has_many :retweets
 
+  has_many :messages
+  # NOTE: collocutors means other users who one is talking to.
+  has_many :collocutors, through: :messages, source: :recipient
+
   validates_presence_of :email, :name, :uid
   validates_uniqueness_of :email, :uid
 

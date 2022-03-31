@@ -1,0 +1,5 @@
+<%=
+  turbo_stream.replace('conversation') do
+    render 'messages/conversation', recipient: @recipient, messages: @messages
+  end
+%>
