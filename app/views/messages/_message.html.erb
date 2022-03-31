@@ -1,6 +1,22 @@
-<div id="<%= dom_id message %>" class="flex my-2">
-  <%= image_tag message.user.avatar_name, class: 'rounded-full w-6 h-6 object-cover mr-2' %>
-  <div>
-    <%= message.content %>
+<%
+  # NOTE: this is rendered through  turob stream broadcraster, so current_user is not relevant here.
+  #is_author = message.user == current_user
+
+  container_direction = is_author ? 'flex-row-reverse' : nil
+  content_box = is_author ? 'bg-sky-500 rounded-br-none' : 'bg-gray-700 rounded-bl-none'
+  content_direction = is_author ? 'items-end' : 'items-start'
+%>
+
+<div
+  id="<%= dom_id message %>"
+  class="flex my-2 items-end <%= container_direction %>"
+>
+  <%= image_tag message.user.avatar_name, class: 'rounded-full w-8 h-8 object-cover mb-4' %>
+
+  <div class="mx-2 w-2/3 flex flex-col <%= content_direction %>">
+    <p class="p-2 px-4 rounded-lg <%= content_box %>">
+      <%= message.content %>
+    </p>
+    <%= time_tag message.created_at, data: { local: 'time-ago' }, class: "text-gray-500 text-xs" %>
   </div>
 </div>

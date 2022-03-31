@@ -25,7 +25,9 @@ class MessagesController < ApplicationController
   # Takes recipient_id param
   def show_conversation
     @recipient = User.find(params[:recipient_id])
-    @messages = Message.where(user_id: [current_user, @recipient]).or(Message.where(recipient_id: [current_user, @recipient])).order(created_at: :asc)
+    @messages = Message.where(user: [current_user, @recipient])
+      .where(recipient: [current_user, @recipient])
+      .order(created_at: :asc)
   end
 
   private

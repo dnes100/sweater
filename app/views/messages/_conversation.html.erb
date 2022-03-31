@@ -13,14 +13,16 @@
       </div>
 
       <!-- Send messages here -->
-      <%= turbo_stream_from Message::ConversationId.call(current_user.messages.new(recipient: recipient)) %>
+      <!--<%#= turbo_stream_from Message::ConversationId.call(current_user.messages.new(recipient: recipient)) %>-->
+      <%= turbo_stream_from current_user.messages.new(recipient: recipient).stream_name_for_author %>
+
       <div class="flex-1 p-3">
         <div
-          id="<%= Message::ConversationId.call(current_user.messages.new(recipient: recipient)) %>"
+          id="<%= current_user.messages.new(recipient: recipient).stream_name_for_author %>"
           class="flex flex-col justify-end h-full"
         >
           <% @messages.each do |message| %>
-            <%= render message %>
+            <%= render message, is_author: message.user == current_user %>
           <% end %>
         </div>
       </div>
