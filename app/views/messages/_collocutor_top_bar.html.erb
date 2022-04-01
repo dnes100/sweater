@@ -1,0 +1,13 @@
+<!--
+  NOTE: Info top bar about the user
+    collocutor: the other user in the conversation
+-->
+<div class="flex p-3">
+  <div class="flex items-center">
+    <%= image_tag collocutor.avatar_name, class: 'rounded-full w-12 h-12 object-cover mr-2' %>
+    <div>
+      <div class="font-semibold"><%= collocutor.name %></div>
+      <div class="text-gray-500">@<%= collocutor.uid %></div>
+    </div>
+  </div>
+</div>

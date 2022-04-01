@@ -1,0 +1,14 @@
+<!--<%#= turbo_stream_from Message::ConversationId.call(current_user.messages.new(recipient: recipient)) %>-->
+<%= turbo_stream_from current_user.messages.new(recipient: collocutor).stream_name_for_author %>
+
+<!-- NOTE: flex-col-reverse is used to set default scroll position to bottom here. -->
+<div class="h-full overflow-auto flex flex-col-reverse p-3">
+  <div
+    id="<%= current_user.messages.new(recipient: collocutor).stream_name_for_author %>"
+    class="flex flex-col justify-end"
+  >
+    <% @messages.each do |message| %>
+      <%= render message, is_author: message.user == current_user %>
+    <% end %>
+  </div>
+</div>
