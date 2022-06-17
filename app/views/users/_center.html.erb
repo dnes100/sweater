@@ -13,8 +13,8 @@
 
   <div class="mx-4">
     <div class="flex">
-      <div class="flex flex-1">
-        <%= image_tag @user.avatar_name, class: 'rounded-full w-32 h-32 object-cover -mt-16' %>
+      <div class="flex flex-1 -mt-16">
+        <%= render 'users/avatar', user: @user, size: 'lg' %>
       </div>
       <div class="flex flex-none items-center">
         <%= render 'follows/follow_button', user: @user %>

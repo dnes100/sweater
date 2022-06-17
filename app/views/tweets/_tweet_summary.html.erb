@@ -12,7 +12,8 @@
   <div class="flex flex-row">
     <%=
       link_to tweet.user do
-        image_tag tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover'
+        render 'users/avatar', user: tweet.user, size: 'md'
+        # image_tag tweet.user.avatar_name, class: 'rounded-full w-12 h-12 object-cover'
       end
     %>
 

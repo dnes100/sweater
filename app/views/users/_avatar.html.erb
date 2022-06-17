@@ -1,0 +1,27 @@
+<%
+  sizes = {
+    xs: 'w-8 h-8',
+    sm: 'w-10 h-10',
+    md: 'w-12 h-12',
+    lg: 'w-32 h-32',
+  }
+
+  font_sizes = {
+    sx: 'text-xs',
+    sm: 'text-lg',
+    md: 'text-xl',
+    lg: 'text-2xl',
+  }
+
+  classes = "rounded-full object-cover #{sizes[size.to_sym]} #{font_sizes[size.to_sym]}"
+%>
+
+<% if user.avatar_name %>
+  <%= image_tag user.avatar_name, class: classes %>
+<% else %>
+  <div class="bg-sky-500 flex items-center justify-center <%= classes %>">
+    <span class="font-bold ">
+      <%= user.name.first %>
+    </span>
+  </div>
+<% end %>

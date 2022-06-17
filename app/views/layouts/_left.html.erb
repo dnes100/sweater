@@ -32,9 +32,7 @@
         data-dropdown-target="button"
       >
 
-        <div class="w-10 h-10">
-          <%= image_tag current_user.avatar_name, class: 'rounded-full object-cover w-full h-full' %>
-        </div>
+        <%= render 'users/avatar', user: current_user, size: 'sm' %>
 
         <div class="ml-3 hidden lg:block">
           <div class="font-semibold whitespace-nowrap"><%= current_user.name %></div>

@@ -35,7 +35,8 @@ class User < ApplicationRecord
       return 'dinesh_avatar.jpg'
     end
 
-    'avatar.png'
+    # We render initial letter as avatar instead.
+    # 'avatar.png'
   end
 
   def cover_image

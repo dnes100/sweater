@@ -11,7 +11,9 @@
   id="<%= dom_id message %>"
   class="flex my-2 items-end <%= container_direction %>"
 >
-  <%= image_tag message.user.avatar_name, class: 'rounded-full w-8 h-8 object-cover mb-4' %>
+  <div class="mb-4">
+    <%= render 'users/avatar', user: message.user, size: 'xs' %>
+  </div>
 
   <div class="mx-2 w-2/3 flex flex-col <%= content_direction %>">
     <p class="p-2 px-4 rounded-lg <%= content_box %>">
